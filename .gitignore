@@ -5,6 +5,8 @@ node_modules
 .next/
 out/
 
+public/engines/stockfish-18/*.wasm
+
 # misc
 .DS_Store
 *.pem

@@ -8,6 +8,7 @@ import NextMoveButton from "./nextMoveButton";
 import GoToLastPositionButton from "./goToLastPositionButton";
 import SaveButton from "./saveButton";
 import { useEffect } from "react";
+import BestMoveButton from "./bestMoveButton";
 
 export default function PanelToolBar() {
   const board = useAtomValue(boardAtom);
@@ -61,6 +62,8 @@ export default function PanelToolBar() {
           </IconButton>
         </Grid>
       </Tooltip>
+
+      <BestMoveButton />
 
       <NextMoveButton />
 
