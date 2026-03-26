@@ -53,6 +53,10 @@ export interface CurrentPosition {
   lastEval?: PositionEval;
   currentMoveIdx?: number;
   opening?: string;
+  analysisFen?: string;
+  lastAnalysisFen?: string;
+  isEvaluating?: boolean;
+  analysisError?: string;
 }
 
 export interface EvaluateGameParams {

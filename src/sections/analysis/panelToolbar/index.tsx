@@ -63,11 +63,11 @@ export default function PanelToolBar() {
         </Grid>
       </Tooltip>
 
+      <BestMoveButton />
+
       <NextMoveButton />
 
       <GoToLastPositionButton />
-
-      <BestMoveButton />
 
       <Tooltip title="Copy pgn">
         <Grid>

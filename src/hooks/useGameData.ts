@@ -13,7 +13,10 @@ export const useGameData = (
   useEffect(() => {
     const history = game.history({ verbose: true });
     const lastMove = history.at(-1);
-    setGameData({ lastMove });
+    setGameData((prev) => ({
+      ...prev,
+      lastMove,
+    }));
   }, [game]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return gameData;
