@@ -1,0 +1,9 @@
+# Files excluded from Cloudflare Workers static assets (25 MiB per-file limit).
+# The matching engines are disabled when NEXT_PUBLIC_DEPLOY_TARGET=cloudflare.
+engines/stockfish-16/*.nnue
+engines/stockfish-16.1/stockfish-16.1.wasm
+engines/stockfish-16.1/stockfish-16.1-single.wasm
+engines/stockfish-18/stockfish-18.wasm
+engines/stockfish-18/stockfish-18-single.wasm
+engines/stockfish-19/stockfish-19.wasm
+engines/stockfish-19/stockfish-19-single.wasm

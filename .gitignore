@@ -6,6 +6,10 @@ node_modules
 out/
 
 public/engines/stockfish-18/*.wasm
+public/engines/stockfish-19/*.wasm
+
+# cloudflare
+.wrangler/
 
 # misc
 .DS_Store

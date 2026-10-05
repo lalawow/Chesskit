@@ -96,6 +96,22 @@ To deploy the app, install [AWS CLI](https://docs.aws.amazon.com/cli/latest/user
 npm run deploy
 ```
 
+#### Cloudflare Workers
+
+The static export can also be deployed on Cloudflare Workers. Authenticate with `npx wrangler login`, then run :
+
+```bash
+pnpm deploy:cloudflare
+```
+
+When using Cloudflare Workers Builds (git integration), set the build command to `pnpm build:cloudflare` and the deploy command to `npx wrangler deploy`.
+
+Workers assets are limited to 25 MiB per file, so the full Stockfish 16 and 16.1 engines are excluded (see `public/.assetsignore`) and disabled in Cloudflare builds.
+
+#### Engine files
+
+The Stockfish 18 and 19 lite wasm files are not stored in git: `scripts/download-engines.mjs` downloads them (checksum-verified) before `dev` and `build`. The full Stockfish 18 and 19 engines are not downloaded for now and are disabled in the app.
+
 ## License
 
 Chesskit is licensed under the GNU Affero General Public License 3. See [copying](COPYING.md) for

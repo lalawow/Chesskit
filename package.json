@@ -4,11 +4,14 @@
   "private": true,
   "license": "GPL-3.0-only",
   "scripts": {
-    "dev": "next dev --turbo",
-    "build": "next build --webpack",
+    "engines:download": "node scripts/download-engines.mjs",
+    "dev": "node scripts/download-engines.mjs && next dev --turbo",
+    "build": "node scripts/download-engines.mjs && next build --webpack",
+    "build:cloudflare": "NEXT_PUBLIC_DEPLOY_TARGET=cloudflare npm run build",
     "start": "next start",
     "lint": "next lint && tsc --noEmit",
-    "deploy": "npm run lint && npm run build && cdk deploy"
+    "deploy": "npm run lint && npm run build && cdk deploy",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -49,6 +52,7 @@
     "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "wrangler": "^4.147.0"
   }
 }

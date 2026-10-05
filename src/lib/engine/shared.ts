@@ -4,6 +4,7 @@ import { Stockfish16 } from "./stockfish16";
 import { Stockfish16_1 } from "./stockfish16_1";
 import { Stockfish17 } from "./stockfish17";
 import { Stockfish18 } from "./stockfish18";
+import { Stockfish19 } from "./stockfish19";
 
 export const isWasmSupported = () =>
   typeof WebAssembly === "object" &&
@@ -24,8 +25,24 @@ export const isIosDevice = () => /iPhone|iPad|iPod/i.test(navigator.userAgent);
 export const isMobileDevice = () =>
   isIosDevice() || /Android|Opera Mini/i.test(navigator.userAgent);
 
+// Engines whose wasm files are not shipped with the build:
+// full Stockfish 18/19 are not downloaded (see scripts/download-engines.mjs),
+// and Cloudflare Workers assets cannot exceed 25 MiB per file.
+const UNAVAILABLE_ENGINES: EngineName[] = [
+  EngineName.Stockfish19,
+  EngineName.Stockfish18,
+  ...(process.env.NEXT_PUBLIC_DEPLOY_TARGET === "cloudflare"
+    ? [EngineName.Stockfish16_1, EngineName.Stockfish16NNUE]
+    : []),
+];
+
 export const isEngineSupported = (name: EngineName): boolean => {
+  if (UNAVAILABLE_ENGINES.includes(name)) return false;
+
   switch (name) {
+    case EngineName.Stockfish19:
+    case EngineName.Stockfish19Lite:
+      return Stockfish19.isSupported();
     case EngineName.Stockfish18:
     case EngineName.Stockfish18Lite:
       return Stockfish18.isSupported();
