@@ -23,6 +23,16 @@ export const ENGINE_LABELS: Record<
   EngineName,
   { small: string; full: string; sizeMb: number }
 > = {
+  [EngineName.Stockfish19]: {
+    full: "Stockfish 19 (100MB)",
+    small: "Stockfish 19",
+    sizeMb: 100,
+  },
+  [EngineName.Stockfish19Lite]: {
+    full: "Stockfish 19 Lite (2MB)",
+    small: "Stockfish 19 Lite",
+    sizeMb: 2,
+  },
   [EngineName.Stockfish18]: {
     full: "Stockfish 18 (100MB)",
     small: "Stockfish 18",

@@ -1,0 +1,11 @@
+# Cloudflare Workers static assets headers (ignored by other hosts).
+# Cross-origin isolation enables SharedArrayBuffer for multi-threaded engines.
+/*
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Opener-Policy: same-origin
+
+/engines/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
